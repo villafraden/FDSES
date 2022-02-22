@@ -7,6 +7,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FromComponent } from './clientes/from.component';
+import { FormsModule } from '@angular/forms';
+import { PaginatorComponent } from './paginator/paginator.component';
+
 
 const routes: Routes = [
   //{path: '', redirectTo: '/clientes', pathMatch: 'full'},
@@ -18,12 +22,15 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent ,
     FooterComponent,
-    ClientesComponent
+    ClientesComponent,
+    FromComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

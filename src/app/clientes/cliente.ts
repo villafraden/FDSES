@@ -1,14 +1,20 @@
+import { TipoDocumento } from "./tipo_documento";
+import { Ciudad } from "./ciudad";
+
 export class Cliente {
     id!: number;
     documento!: string;
     nombre!: string;
     contacto!: string;
-    //cargo!: string; 
+    cargo!: string; 
     direccion!: string;
     telefono!: string;
-    telefono2!: string;
+    telefono1!: string;
     celular!: string;
-    createAt!: string;
     email!: string;
+    fecha_ingreso!: string;
+    id_ciudad!: Ciudad;
+    id_tipo_documento!: TipoDocumento
+    observaciones!: string;
 
 }
