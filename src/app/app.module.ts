@@ -14,13 +14,16 @@ import { PaginatorComponent } from './paginator/paginator.component';
 
 const routes: Routes = [
   //{path: '', redirectTo: '/clientes', pathMatch: 'full'},
-  {path: 'clientes', component: ClientesComponent}
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'clientes/page/:page', component: ClientesComponent },
+  { path: 'clientes/form', component: FromComponent}
+
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent ,
+    HeaderComponent,
     FooterComponent,
     ClientesComponent,
     FromComponent,
