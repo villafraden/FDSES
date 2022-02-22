@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import {Proveedor} from './proveedor';
+import {ProveedorService} from './proveedor.service';
+
 
 @Component({
   selector: 'app-proveedores',
   templateUrl: './proveedores.component.html',
-  styleUrls: ['./proveedores.component.css']
+
 })
 export class ProveedoresComponent implements OnInit {
 
-  constructor() { }
+  proveedor: Proveedor[];
+  constructor(private  proveedorService: ProveedorService) { }
 
   ngOnInit(): void {
+
+    this.proveedorService.getProveedores().suscribe(
+      proveedores => this.proveedores = proveedores);
   }
 
 }
