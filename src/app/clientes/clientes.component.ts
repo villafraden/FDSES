@@ -3,6 +3,8 @@ import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-clientes',
@@ -18,61 +20,61 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
+    this.clienteService.getClientes().subscribe(
+      clientes => this.clientes = clientes
+    );
 
-      if (!page) {
-        page = 0;
-      }
+    //this.activatedRoute.paramMap.subscribe(params => {
+    //  let page: number = +params.get('page');
 
-      this.clienteService.getClientes(page)
-        .pipe(
-          tap(response => {
-            console.log('ClientesComponent: tap 3');
-            (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
-          })
-        ).subscribe(response => {
-          this.clientes = response.content as Cliente[];
-          this.paginador = response;
-        });
-    });
+    //  if (!page) {
+    //    page = 0;
+    //  }
 
-    //delete(cliente: Cliente): void {
-    //  const swalfire = swal.mixin({
-    //    customClass: {
-    //      confirmButton: 'btn btn-success',
-    //      cancelButton: 'btn btn-danger'
-    //    },
-    //    buttonsStyling: false
-    //  })
-    //  swalfire.fire({
-    //    title: 'Está seguro?',
-    //    text: `¿Seguro que desea eliminar al cliente ${cliente.nombre} ${cliente.apellido}?`,
-    //    icon: 'warning',
-    //    showCancelButton: true,
-    //    confirmButtonColor: '#3085d6',
-    //    cancelButtonColor: '#d33',
-    //    confirmButtonText: 'Si, eliminar',
-    //    cancelButtonText: 'No, cancelar',
-    //    buttonsStyling: false,
-    //    reverseButtons: true
-    //  }).then((result) => {
-    //    if (result.value) {
-  
-    //      this.clienteService.delete(cliente.id).subscribe(
-    //        response => {
-    //          this.clientes = this.clientes.filter(cli => cli !== cliente)
-    //          swal.fire(
-    //            'Cliente Eliminado',
-    //            `Cliente ${cliente.nombre} eliminado con éxito.`,
-    //            'success'
-    //          )
-    //        }
-    //      )
-    //    }
+    //  this.clienteService.getClientes(page).pipe(
+    //    tap(response => {
+    //      console.log('ClientesComponent: tap 3');
+    //      (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+    //    })
+    //  ).subscribe(response => {
+    //    this.clientes = response.content as Cliente[];
+    //    this.paginador = response;
     //  });
-    //}
-
+    //});
   }
+  delete(cliente: Cliente): void {
+    const swalfire = swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    swalfire.fire({
+      title: 'Está seguro?',
+      text: `¿Seguro que desea eliminar al cliente ${cliente.nombre}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'No, cancelar',
+      buttonsStyling: false,
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
 
+        this.clienteService.delete(cliente.id).subscribe(
+          response => {
+            this.clientes = this.clientes.filter(cli => cli !== cliente)
+            swal.fire(
+              'Cliente Eliminado',
+              `Cliente ${cliente.nombre} eliminado con éxito.`,
+              'success'
+            )
+          }
+        )
+      }
+    });
+  }
 }
