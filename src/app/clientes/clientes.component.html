@@ -7,16 +7,18 @@
                 Crear Cliente
             </button>
         </div>
-        <table class="table table-bordered table-striped">
+        <div *ngIf="clientes?.length == 0" class="alert alert-info">
+            No hay registros en la base de datos!
+        </div>
+        <table class="table table-bordered " *ngIf="clientes?.length>0">
             <thead>
                 <tr>
-                    <th class="mb-1">Id</th>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Documento</th>
                     <th>Email</th>
                     <th>Telefono 1</th>
                     <th>Celular</th>
-                    <th>Cargo</th>
                     <th>Direccion</th>
                     <th>Crear Factura</th>
                     <th>Editar</th>
@@ -26,19 +28,20 @@
             <tbody>
                 <tr *ngFor="let cliente of clientes">
                     <td>{{ cliente.id }}</td>
-                    <td>{{ cliente.nombre }}</td>
+                    <td>{{ cliente.nombre | lowercase }}</td>
                     <td>{{ cliente.documento }}</td>
-                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.email | lowercase }}</td>
                     <td>{{ cliente.telefono }}</td>
                     <td>{{ cliente.celular }}</td>
-                    <td>{{ cliente.cargo }}</td>
-                    <td>{{ cliente.direccion }}</td>
+                    <td>{{ cliente.direccion | lowercase }}</td>
                     <td></td>
                     <td>
-                        <button type="button" name="Editar" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-success btn-sm">Editar</button>
+                        <button type="button" name="Editar" [routerLink]="['/clientes/form', cliente.id]"
+                            class="btn btn-success btn-sm">Editar</button>
                     </td>
                     <td>
-                        <button type="button" name="Eliminar" (click)='delete(cliente)' class="btn btn-danger btn-sm">Eliminar</button>
+                        <button type="button" name="Eliminar" (click)='delete(cliente)'
+                            class="btn btn-danger btn-sm">Eliminar</button>
                     </td>
                 </tr>
             </tbody>

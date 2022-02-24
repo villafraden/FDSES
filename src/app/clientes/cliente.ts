@@ -14,7 +14,7 @@ export class Cliente {
     email!: string;
     fecha_ingreso!: string;
     id_ciudad!: Ciudad;
-    id_tipo_documento!: TipoDocumento
+    id_tipo_documento!: TipoDocumento;
     observaciones!: string;
 
 }
