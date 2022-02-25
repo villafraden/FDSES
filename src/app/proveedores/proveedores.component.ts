@@ -10,13 +10,14 @@ import {ProveedorService} from './proveedor.service';
 })
 export class ProveedoresComponent implements OnInit {
 
-  proveedor: Proveedor[];
+  proveedores: Proveedor[];
   constructor(private  proveedorService: ProveedorService) { }
 
   ngOnInit(): void {
 
-    this.proveedorService.getProveedores().suscribe(
-      proveedores => this.proveedores = proveedores);
-  }
+   /* this.proveedorService.getProveedores().suscribe(
+      proveedores => this.proveedores = proveedores);*/
+
+    }
 
 }
