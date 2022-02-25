@@ -2,11 +2,11 @@ import { TipoDocumento } from "./tipo_documento";
 import { Ciudad } from "./ciudad";
 
 export class Cliente {
-    id: number;
+    id!: number;
     documento: string;
     nombre: string;
     contacto: string;
-    cargo: string; 
+    cargo: string;
     direccion: string;
     telefono: string;
     telefono1: string;

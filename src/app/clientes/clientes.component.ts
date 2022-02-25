@@ -40,7 +40,7 @@ export class ClientesComponent implements OnInit {
           this.paginador = response;
         });
     });
-    
+
   }
 
   delete(cliente: Cliente): void {

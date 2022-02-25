@@ -18,11 +18,13 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" [routerLink]="['/clientes']">Clientes</a></li>
-            <li><a class="dropdown-item" href="#">Proveedores</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/proveedores']">Proveedores</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/vendedores']">Vendedores</a></li>
           </ul>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/clientes']">Clientes</a>
+
         </li>
       </ul>
       <!--<ul class="nav-rigth">

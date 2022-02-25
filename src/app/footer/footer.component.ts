@@ -6,6 +6,5 @@ templateUrl: './footer.component.html',
 styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  public empresa: any = {nombre:'Fundases'};
-  public autor: any = {nombre: 'Sofia Gutierrez', nombre1:'Nelson Villafrade'}
+  public autor: any = {nombre:'Nelson Rodrigo', apellido:'Villafrade Blanco ', empresa:' FUNDASES 2022 ',nombre2:'Sofia Paola', apellido2:'Gutierrez Guzman' };
 }
