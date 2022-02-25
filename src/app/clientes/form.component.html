@@ -30,7 +30,7 @@
                 <div class="col-sm-4">
                     <select [compareWith]="compararTipoDocumento" class="form-control" [(ngModel)]="cliente.id_tipo_documento" name="tipo_documento">
                         <option [ngValue]="undefined">Seleccione un Tipo Documento</option>
-                        <option *ngFor="let tipo_documento of tipos_documentos" [ngValue]="tipo_documento">{{tipo_documento.tipo_documento}}</option>
+                        <option *ngFor="let tipo_documento of tipos_documentos" [ngValue]="tipo_documento">{{tipo_documento.id_tipo_documento}}{{tipo_documento.tipo_documento}}</option>
                     </select>
                 </div>
                 <label for="documento" class="col-form-label col-sm-2 mb-3">Documento</label>

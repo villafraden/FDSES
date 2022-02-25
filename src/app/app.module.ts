@@ -46,7 +46,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatMomentDateModule,
+    MatMomentDateModule
   ],
   providers: [
     ClienteService,
