@@ -17,6 +17,7 @@ import localeES from '@angular/common/locales/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
@@ -53,7 +54,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [
     ClienteService,
