@@ -3,6 +3,8 @@ import { Cliente } from './cliente';
 import swal from 'sweetalert2';
 import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Ciudad } from './ciudad';
+import { TipoDocumento } from './tipo_documento';
 
 @Component({
   selector: 'app-from',
@@ -12,6 +14,8 @@ export class FromComponent implements OnInit {
 
   public cliente: Cliente = new Cliente();
 
+  ciudades: Ciudad[];
+  tipos_documentos: TipoDocumento[];
   titulo: string = "Crear Cliente";
 
   errores: string[];
@@ -27,6 +31,9 @@ export class FromComponent implements OnInit {
         this.clienteService.getCliente(id).subscribe((cliente) => this.cliente = cliente);
       }
     });
+
+    this.clienteService.getCiudades().subscribe(ciudades => this.ciudades = ciudades);
+    this.clienteService.getTipoDocumento().subscribe(tipos_documentos => this.tipos_documentos = tipos_documentos);
 
   }
 
@@ -59,6 +66,22 @@ export class FromComponent implements OnInit {
         console.error(err.error.errors);
       }
     );
+  }
+
+  compararCiudad(o1: Ciudad, o2: Ciudad): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
+  }
+
+  compararTipoDocumento(o1: TipoDocumento, o2: TipoDocumento): boolean {
+    if (o1 === undefined && o2 === undefined) {
+      return true;
+    }
+
+    return o1 === null || o2 === null || o1 === undefined || o2 === undefined ? false : o1.id === o2.id;
   }
 
 }

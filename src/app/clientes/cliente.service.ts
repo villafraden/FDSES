@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-//import { Ciudad } from './ciudad';
-//import { TipoDocumento } from './tipo_documento';
+import { Ciudad } from './ciudad';
+import { TipoDocumento } from './tipo_documento';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,13 @@ export class ClienteService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  //getTipoDocumento(): Observable<TipoDocumento[]> {
-  //  return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipo_documento')
-  //}
+  getTipoDocumento(): Observable<TipoDocumento[]> {
+    return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipos_documentos')
+  }
 
-  //getCiudades(): Observable<Ciudad[]> {
-  //  return this.http.get<Ciudad[]>(this.urlEndPoint + '/ciudades');
-  //}
+  getCiudades(): Observable<Ciudad[]> {
+    return this.http.get<Ciudad[]>(this.urlEndPoint + '/ciudades');
+  }
 
   getClientes(page: number): Observable<any> {
     return this.http.get(this.urlEndPoint + '/page/' + page).pipe(

@@ -19,7 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 
-
+registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
   //{path: '', redirectTo: '/clientes', pathMatch: 'full'},
@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FromComponent},
   { path: 'clientes/form/:id', component: FromComponent }
-
 ]
 
 @NgModule({
@@ -49,7 +48,10 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMomentDateModule,
   ],
-  providers: [],
+  providers: [
+    ClienteService,
+    { provide: LOCALE_ID, useValue: 'es' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
