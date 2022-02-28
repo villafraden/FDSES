@@ -1,5 +1,5 @@
-import { Departamento } from './departamento';
-import { Clima } from './clima';
+import { Departamento } from './clientes/departamento';
+import { Clima } from './clientes/clima';
 
 export class Ciudad {
     id!: number;
