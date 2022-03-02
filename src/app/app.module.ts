@@ -3,7 +3,6 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
 import { ClientesComponent } from './clientes/clientes.component';
 import { FromComponent } from './clientes/form.component';
 import { PaginatorComponent } from './paginator/paginator.component';
@@ -21,6 +20,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
+import { LoginComponent } from './usuarios/login.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -30,8 +30,9 @@ const routes: Routes = [
   { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FromComponent},
   { path: 'clientes/form/:id', component: FromComponent },
-  {path: 'proveedores', component: ProveedoresComponent},
-  {path: 'vendedores', component: VendedoresComponent}
+  { path: 'proveedores', component: ProveedoresComponent },
+  { path: 'vendedores', component: VendedoresComponent },
+  { path: 'login', component: LoginComponent }
 ]
 
 @NgModule({
@@ -46,7 +47,8 @@ const routes: Routes = [
     PaginatorComponent,
     DetalleComponent,
     ProveedoresComponent,
-    VendedoresComponent
+    VendedoresComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

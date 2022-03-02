@@ -30,12 +30,12 @@
                 <tr *ngFor="let cliente of clientes">
                     <td><button type="button" name="ver" (click)="abrirModal(cliente)"
                         class="btn btn-primary btn-sm">{{ cliente.id }}</button></td>
-                    <td>{{ cliente.nombre | lowercase }}</td>
+                    <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.documento }}</td>
-                    <td>{{ cliente.email | lowercase }}</td>
+                    <td>{{ cliente.email }}</td>
                     <td>{{ cliente.telefono }}</td>
                     <td>{{ cliente.celular }}</td>
-                    <td>{{ cliente.direccion | lowercase }}</td>
+                    <td>{{ cliente.direccion }}</td>
                     <td></td>
                     <td>
                         <button type="button" name="editar" [routerLink]="['/clientes/form', cliente.id]"
