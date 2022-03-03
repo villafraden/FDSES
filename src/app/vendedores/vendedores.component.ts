@@ -4,7 +4,7 @@ import {VendedorService} from './vendedor.service';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
-import { ModalService } from './detalle/modal.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-vendedores',
@@ -17,7 +17,7 @@ export class VendedoresComponent implements OnInit {
   paginador: any;
   vendedorSeleccionado: Vendedor;
 
-  constructor(private vendedorService: VendedorService) { }
+  constructor(private vendedorService: VendedorService, private activatedRoute: ActivatedRoute, public modalService: ModalService) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -30,28 +30,11 @@ export class VendedoresComponent implements OnInit {
       this.vendedorService.getVendedores(page)
         .pipe(
           tap(response => {
-            console.log('ClientesComponent: tap 3');
-            (response.content as Vendedor[]).forEach(cliente => console.log(cliente.nombre));
-          })
-        ).subscribe(response => {
-          this.vendedores = response.content as    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
-
-      if (!page) {
-        page = 0;
-      }
-
-      this.vendedorService.getVendedores(page)
-        .pipe(
-          tap(response => {
-            console.log('ClientesComponent: tap 3');
-            (response.content as Vendedor[]).forEach(cliente => console.log(cliente.nombre));
+            console.log('VendedoresComponent: tap 3');
+            (response.content as Vendedor[]).forEach(vendedor => console.log(vendedor.nombre));
           })
         ).subscribe(response => {
           this.vendedores = response.content as Vendedor[];
-          this.paginador = response;
-        });
-    });[];
           this.paginador = response;
         });
     });
@@ -68,7 +51,7 @@ export class VendedoresComponent implements OnInit {
     })
     swalfire.fire({
       title: 'Está seguro?',
-      text: `¿Seguro que desea eliminar al vendedor ${venddor.nombre}?`,
+      text: `¿Seguro que desea eliminar al vendedor ${vendedor.nombre}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -101,5 +84,4 @@ export class VendedoresComponent implements OnInit {
 
 
 }
-
 

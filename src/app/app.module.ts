@@ -21,6 +21,7 @@ import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
 import { LoginComponent } from './usuarios/login.component';
+import { DetallesComponent } from './vendedores/detalles/detalles.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -46,9 +47,9 @@ const routes: Routes = [
     FromComponent,
     PaginatorComponent,
     DetalleComponent,
-    ProveedoresComponent,
-    VendedoresComponent,
-    LoginComponent
+
+    LoginComponent,
+    DetallesComponent
   ],
   imports: [
     BrowserModule,
