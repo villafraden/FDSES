@@ -17,7 +17,8 @@ export class ClientesComponent implements OnInit {
   paginador: any;
   clienteSeleccionado: Cliente;
 
-  constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute,
+  constructor(private clienteService: ClienteService, 
+    private activatedRoute: ActivatedRoute,
     public modalService: ModalService) { }
 
   ngOnInit(): void {
@@ -40,6 +41,15 @@ export class ClientesComponent implements OnInit {
           this.paginador = response;
         });
     });
+
+    this.modalService.notificarUpload.subscribe(cliente => {
+      this.clientes = this.clientes.map(clienteOriginal => {
+        if (cliente.id == clienteOriginal.id) {
+          clienteOriginal.id = cliente.id;
+        }
+        return clienteOriginal;
+      })
+    })
 
   }
 
