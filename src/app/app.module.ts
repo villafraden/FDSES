@@ -19,10 +19,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './proveedores/proveedores.component';
-import { VendedoresComponent } from './vendedores/vendedores.component';
 import { LoginComponent } from './usuarios/login.component';
 import { DetallesComponent } from './vendedores/detalles/detalles.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { VendedoresComponent } from './vendedores/vendedores.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -44,11 +44,11 @@ const routes: Routes = [
     FooterComponent,
     ClientesComponent,
     ProveedoresComponent,
-    VendedoresComponent,
     FromComponent,
     PaginatorComponent,
     DetalleComponent,
     LoginComponent,
+    VendedoresComponent,
     DetallesComponent
   ],
   imports: [

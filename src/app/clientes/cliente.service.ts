@@ -40,8 +40,10 @@ export class ClienteService {
       tap(response => {
         console.log('ClienteService: tap 2');
         (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
-      }));
+      })
+    );
   }
+
   create(cliente: Cliente): Observable<Cliente> {
     return this.http.post(this.urlEndPoint, cliente).pipe(
       map((response: any) => response.cliente as Cliente),
@@ -65,7 +67,6 @@ export class ClienteService {
           this.router.navigate(['/clientes']);
           console.error(e.error.mensaje);
         }
-
         return throwError(e);
       })
     );

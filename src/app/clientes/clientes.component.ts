@@ -16,8 +16,13 @@ export class ClientesComponent implements OnInit {
   paginador: any;
   clienteSeleccionado: Cliente;
 
+<<<<<<< HEAD
 
   constructor(private clienteService: ClienteService, private activatedRoute: ActivatedRoute,
+=======
+  constructor(private clienteService: ClienteService, 
+    private activatedRoute: ActivatedRoute,
+>>>>>>> 8b5162263ea935c0cea5b0be58b3dc14eec9cc8f
     public modalService: ModalService) { }
 
   ngOnInit(): void {
@@ -40,6 +45,15 @@ export class ClientesComponent implements OnInit {
           this.paginador = response;
         });
     });
+
+    this.modalService.notificarUpload.subscribe(cliente => {
+      this.clientes = this.clientes.map(clienteOriginal => {
+        if (cliente.id == clienteOriginal.id) {
+          clienteOriginal.id = cliente.id;
+        }
+        return clienteOriginal;
+      })
+    })
 
   }
 
