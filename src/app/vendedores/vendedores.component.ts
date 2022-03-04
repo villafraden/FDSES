@@ -13,33 +13,24 @@ import { ModalService } from '../modal.service';
 })
 export class VendedoresComponent implements OnInit {
   vendedores: Vendedor[];
+  public page: number;
 
   paginador: any;
   vendedorSeleccionado: Vendedor;
 
   constructor(private vendedorService: VendedorService, private activatedRoute: ActivatedRoute, public modalService: ModalService) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
-
-      if (!page) {
-        page = 0;
-      }
-
-      this.vendedorService.getVendedores(page)
+  ngOnInit(){
+       this.vendedorService.getVendedores()
         .pipe(
-          tap(response => {
+          tap(vendedores => {
             console.log('VendedoresComponent: tap 3');
-            (response.content as Vendedor[]).forEach(vendedor => console.log(vendedor.nombre));
+            vendedores.forEach(vendedor => {
+              console.log(vendedor.nombre);
+            } );
           })
-        ).subscribe(response => {
-          this.vendedores = response.content as Vendedor[];
-          this.paginador = response;
-        });
-    });
-
-  }
+          ).subscribe(vendedores => this.vendedores = vendedores);
+      }
 
   delete(vendedor: Vendedor): void {
     const swalfire = swal.mixin({

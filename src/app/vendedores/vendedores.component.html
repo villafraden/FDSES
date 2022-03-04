@@ -1,8 +1,8 @@
 <detalle-vendedor *ngIf="vendedorSeleccionado" [Vendedor] ="vendedorSeleccionado"></detalle-vendedor>
 <div class="card border-primary my-3" style="max-width: 100rem">
-    <div class="card-header">Vendedores</div>
+   <!--<div class="card-header">Listado de Vendedores</div>-->
     <div class="card-body text-primary">
-        <h2 class="card-title">Listado de Vendedores</h2>
+      <h2 class="card-title " style="text-align:center"  >Listado de Vendedores</h2>
         <div class="my-2 text-left">
             <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/vendedores/formVendedor']">
                 Crear Vendedor
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let vendedor of vendedores">
+                <tr *ngFor="let vendedor of vendedores | paginate: { itemsPerPage: 8, currentPage: page }">
                     <td><button type="button" name="ver" (click)="abrirModal(vendedor)"
                         class="btn btn-primary btn-sm">{{ vendedor.id }}</button></td>
                     <td>{{ vendedor.nombre }}</td>
@@ -48,6 +48,11 @@
                 </tr>
             </tbody>
         </table>
-        <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+
+       <pagination-controls (pageChange)="page = $event"
+       previousLabel="Anterior"
+       nextLabel="Siguiente"      >
+      </pagination-controls>
+
     </div>
 </div>

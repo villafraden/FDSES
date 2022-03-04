@@ -24,39 +24,30 @@ export class VendedorService {
     return this.http.get<Ciudad[]>(this.urlEndPoint + '/vendedores');
   }
 
-  getVendedores(page: number): Observable<any> {
-    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
-      tap((response: any) => {
+  getVendedores(): Observable<Vendedor[]> {
+    return this.http.get(this.urlEndPoint).pipe(
+      tap(response => {
+        let vendedores = response  as Vendedor[];
         console.log('VendedorService: tap 1');
-        (response.content as Vendedor[]).forEach(vendedor => console.log(vendedor.nombre));
-      }),
-      map((response: any) => {
-        (response.content as Vendedor[]).map(vendedor => {
-          vendedor.nombre = vendedor.nombre.toUpperCase();
-          return vendedor;
-        });
-        return response;
-      }),
+         vendedores.forEach(vendedor =>{
+          console.log(vendedor.nombre);
+          });
+        }),
+      map(response => {
+        let vendedores = response  as Vendedor[];
+          return vendedores.map(vendedor => {
+            vendedor.nombre = vendedor.nombre.toUpperCase();
+            return vendedor;
+      });
+    }),
       tap(response => {
         console.log('VendedorService: tap 2');
-        (response.content as Vendedor[]).forEach(vendedor => console.log(vendedor.nombre));
-      }));
-  }
-  create(vendedor:Vendedor): Observable<Vendedor> {
-    return this.http.post(this.urlEndPoint, vendedor).pipe(
-      map((response: any) => response.vendedor as Vendedor),
-      catchError(e => {
-        if (e.status == 400) {
-          return throwError(e);
-        }
-        if (e.error.mensaje) {
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      }
-      )
-    );
-  }
+        response.forEach(vendedor => {
+          console.log(vendedor.nombre);
+        });
+  })
+      );
+}
 
   getVendedor(id): Observable<Vendedor> {
     return this.http.get<Vendedor>(`${this.urlEndPoint}/${id}`).pipe(

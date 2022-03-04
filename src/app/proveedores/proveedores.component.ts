@@ -14,32 +14,24 @@ import { ModalService } from '../modal.service';
 export class ProveedoresComponent implements OnInit {
   proveedores: Proveedor[];
 
+  public page: number;
   paginador: any;
   proveedorSeleccionado: Proveedor;
 
   constructor(private proveedorService: ProveedorService, private activatedRoute: ActivatedRoute, public modalService: ModalService) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
-
-      if (!page) {
-        page = 0;
-      }
-
-      this.proveedorService.getProveedores(page)
-        .pipe(
-          tap(response => {
-            console.log('ProveedoresComponent: tap 3');
-            (response.content as Proveedor[]).forEach(proveedor => console.log(proveedor.nombre));
-          })
-        ).subscribe(response => {
-          this.proveedores = response.content as Proveedor[];
-          this.paginador = response;
-        });
-    });
-
+  ngOnInit()  {
+    this.proveedorService.getProveedores()
+    .pipe(
+      tap(proveedores => {
+        console.log('ProveedoresComponent: tap 3');
+        proveedores.forEach(proveedor => {
+          console.log(proveedor.nombre);
+        } );
+      })
+      ).subscribe(proveedores => this.proveedores = proveedores);
   }
+
 
   delete(proveedor: Proveedor): void {
     const swalfire = swal.mixin({

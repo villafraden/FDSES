@@ -1,8 +1,8 @@
 <detalle-proveedor *ngIf="proveedorSeleccionado" [proveedor] ="proveedorSeleccionado"></detalle-proveedor>
 <div class="card border-primary my-3" style="max-width: 100rem">
-    <div class="card-header">Proveedores</div>
+   <!--<div class="card-header">Listado de Proveedores</div>-->
     <div class="card-body text-primary">
-        <h2 class="card-title">Listado de Proveedores</h2>
+      <h2 class="card-title" style="text-align:center">Listado de Proveedores</h2>
         <div class="my-2 text-left">
             <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/proveedores/formProveedor']">
                 Crear Proveedor
@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let proveedor of proveedores">
+                <tr *ngFor="let proveedor of proveedores | paginate: { itemsPerPage: 8, currentPage: page }">
                     <td><button type="button" name="ver" (click)="abrirModal(proveedor)"
                         class="btn btn-primary btn-sm">{{ proveedor.id }}</button></td>
                     <td>{{ proveedor.nombre }}</td>
@@ -48,6 +48,11 @@
                 </tr>
             </tbody>
         </table>
-        <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+
+        <pagination-controls (pageChange)="page = $event"
+        previousLabel="Anterior"
+        nextLabel="Siguiente">
+       </pagination-controls>
+
     </div>
 </div>

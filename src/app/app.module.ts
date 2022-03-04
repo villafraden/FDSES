@@ -22,6 +22,7 @@ import { ProveedoresComponent } from './proveedores/proveedores.component';
 import { VendedoresComponent } from './vendedores/vendedores.component';
 import { LoginComponent } from './usuarios/login.component';
 import { DetallesComponent } from './vendedores/detalles/detalles.component';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 registerLocaleData(localeES, 'es');
 
@@ -47,7 +48,6 @@ const routes: Routes = [
     FromComponent,
     PaginatorComponent,
     DetalleComponent,
-
     LoginComponent,
     DetallesComponent
   ],
@@ -58,7 +58,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    NgxPaginationModule
   ],
   providers: [
     ClienteService,
