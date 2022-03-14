@@ -1,0 +1,76 @@
+<br>
+<br>
+<div class="container mt--8 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-transparent pb-5">
+          <div class="text-light text-center mt-2 mb-3">
+            <h1>{{ titulo }}</h1>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <form role="form">
+              <div class="form-group mb-3">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="ni ni-email-83"></i>
+                    </span>
+                  </div>
+                  <input
+                    [(ngModel)]="usuario.username"
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    id="username"
+                    placeholder="Email"
+                    autofocus
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-lock-circle-open"></i
+                    ></span>
+                  </div>
+                  <input
+                    [(ngModel)]="usuario.password"
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                  />
+                </div>
+              </div>
+              <div
+                class="custom-control custom-control-alternative custom-checkbox"
+              >
+                <input
+                  class="custom-control-input"
+                  id=" customCheckLogin"
+                  type="checkbox"
+                />
+                <label class="custom-control-label" for=" customCheckLogin">
+                  <span class="text-light">Remember me</span>
+                </label>
+              </div>
+              <div class="text-center">
+                <input
+                  (click)="login()"
+                  type="submit"
+                  class="btn btn-lg btn-primary btn-block"
+                  value="Iniciar Sesion"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
