@@ -13,7 +13,6 @@ export class Cliente {
     celular: string;
     email: string;
     fecha_ingreso: string;
-    id_ciudad: Ciudad;
     ciudad: Ciudad;
     id_tipo_documento: TipoDocumento;
     tipoDocumento: TipoDocumento;

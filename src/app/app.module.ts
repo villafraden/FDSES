@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientesComponent } from './views/clientes/clientes.component';
 import { FromComponent } from './views/clientes/form.component';
-import { PaginatorComponent } from './views/paginator/paginator.component';
 import { ClienteService } from './views/clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -37,7 +36,6 @@ registerLocaleData(localeES, 'es');
 const routes: Routes = [
   //{path: '', redirectTo: '/clientes', pathMatch: 'full'},
   { path: 'clientes', component: ClientesComponent },
-  { path: 'clientes/page/:page', component: ClientesComponent },
   { path: 'clientes/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'clientes/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'proveedores', component: ProveedoresComponent },
@@ -54,7 +52,6 @@ const routes: Routes = [
     ClientesComponent,
     ProveedoresComponent,
     FromComponent,
-    PaginatorComponent,
     DetalleComponent,
     LoginComponent,
     VendedoresComponent,
@@ -83,6 +80,7 @@ const routes: Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

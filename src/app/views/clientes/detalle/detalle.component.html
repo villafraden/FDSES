@@ -21,7 +21,7 @@
                 <ul *ngIf="cliente" class="list-group text-dark mb-3">
                   <li class="list-group-item active">{{ cliente.nombre }}</li>
                   <li class="list-group-item">
-                    {{ cliente.tipo_documento.tipo_documento }}
+                    {{ cliente.tipo_documento.nombre}}
                   </li>
                   <li class="list-group-item">{{ cliente.documento }}</li>
                   <li class="list-group-item">{{ cliente.cargo }}</li>
@@ -32,7 +32,7 @@
                   <li class="list-group-item">
                     {{ cliente.fecha_ingreso | date: "fullDate" }}
                   </li>
-                  <li class="list-group-item">{{ cliente.ciudad.ciudad }}</li>
+                  <li class="list-group-item">{{ cliente.ciudad.nombre }}</li>
                 </ul>
               </div>
               <!--<div class="row">
