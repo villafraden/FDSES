@@ -24,24 +24,30 @@ export class ProveedorService {
     return this.http.get<Ciudad[]>(this.urlEndPoint + '/proveedores');
   }
 
-  getProveedores(page: number): Observable<any> {
-    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
-      tap((response: any) => {
+  getProveedores(): Observable<Proveedor[]> {
+    return this.http.get(this.urlEndPoint).pipe(
+      tap(response => {
+        let proveedores = response  as Proveedor[];
         console.log('ProveedorService: tap 1');
-        (response.content as Proveedor[]).forEach(proveedor => console.log(proveedor.nombre));
-      }),
-      map((response: any) => {
-        (response.content as Proveedor[]).map(proveedor => {
-          proveedor.nombre = proveedor.nombre.toUpperCase();
-          return proveedor;
-        });
-        return response;
-      }),
+         proveedores.forEach(proveedor =>{
+          console.log(proveedor.nombre);
+          });
+        }),
+      map(response => {
+        let proveedores = response  as Proveedor[];
+          return proveedores.map(proveedor => {
+            proveedor.nombre = proveedor.nombre.toUpperCase();
+            return proveedor;
+      });
+    }),
       tap(response => {
         console.log('ProveedorService: tap 2');
-        (response.content as Proveedor[]).forEach(proveedor => console.log(proveedor.nombre));
-      }));
-  }
+        response.forEach(proveedor => {
+          console.log(proveedor.nombre);
+        });
+    })
+  );
+}
 
 
   create(proveedor:Proveedor): Observable<Proveedor> {

@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { ModalService } from './detalle/modal.service';
 import { AuthService } from '../usuarios/auth.service';
-import { AngularEmojisModule } from 'angular-emojis';
 
 @Component({
   selector: 'app-clientes',

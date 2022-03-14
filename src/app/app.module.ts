@@ -30,10 +30,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
-
-/*import {
-  AppHeaderModule
-} from '@coreui/angular';*/
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 registerLocaleData(localeES, 'es');
 
@@ -59,6 +56,7 @@ const routes: Routes = [
     FromComponent,
     PaginatorComponent,
     DetalleComponent,
+    LoginComponent,
     VendedoresComponent,
     DetallesComponent,
     LoginComponent,
@@ -76,7 +74,8 @@ const routes: Routes = [
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule, 
-    AngularEmojisModule
+    AngularEmojisModule,
+    NgxPaginationModule
   ],
   providers: [
     ClienteService,

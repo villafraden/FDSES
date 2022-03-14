@@ -12,37 +12,29 @@ import { ModalService } from '../../modal.service';
   styleUrls: ['./vendedores.component.css']
 })
 export class VendedoresComponent implements OnInit {
-  
+
   vendedores: Vendedor[];
+  public page: number;
 
   paginador: any;
   vendedorSeleccionado: Vendedor;
 
-  constructor(private vendedorService: VendedorService, 
-    private activatedRoute: ActivatedRoute, 
+  constructor(private vendedorService: VendedorService,
+    private activatedRoute: ActivatedRoute,
     public modalService: ModalService) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
-
-      if (!page) {
-        page = 0;
+  ngOnInit(){
+       this.vendedorService.getVendedores()
+        .pipe(
+          tap(vendedores => {
+            console.log('VendedoresComponent: tap 3');
+            vendedores.forEach(vendedor => {
+              console.log(vendedor.nombre);
+            } );
+          })
+          ).subscribe(vendedores => this.vendedores = vendedores);
       }
 
-    this.vendedorService.getVendedores(page)
-      .pipe(
-        tap(response => {
-          console.log('VendedoresComponent: tap 3');
-          (response.content as Vendedor[]).forEach(vendedor => console.log(vendedor.nombre));
-        })
-      ).subscribe(response => {
-        this.vendedores = response.content as Vendedor[];
-        this.paginador = response;
-      });
-  });
-
-}
 
 
 delete (vendedor: Vendedor): void {
