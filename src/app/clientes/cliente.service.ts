@@ -17,7 +17,7 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getTipoDocumento(): Observable<TipoDocumento[]> {
-    return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipos_documentos')
+    return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipo_documento')
   }
 
   getCiudades(): Observable<Ciudad[]> {

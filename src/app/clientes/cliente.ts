@@ -2,7 +2,7 @@ import { TipoDocumento } from "../tipo_documento";
 import { Ciudad } from "../ciudad";
 
 export class Cliente {
-    id!: number;
+    id: number;
     documento: string;
     nombre: string;
     contacto: string;
@@ -13,10 +13,10 @@ export class Cliente {
     celular: string;
     email: string;
     fecha_ingreso: string;
-    id_ciudad: Ciudad;
+    //id_ciudad: Ciudad;
     ciudad: Ciudad;
-    id_tipo_documento: TipoDocumento;
+    //id_tipo_documento: TipoDocumento;
     tipo_documento: TipoDocumento;
     observaciones: string;
-
+    ruta_archivo: string;
 }

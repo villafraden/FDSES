@@ -29,8 +29,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let cliente of clientes">
-                    <td><button type="button" name="ver" (click)="abrirModal(cliente)" class="btn btn-primary btn-sm">{{
-                            cliente.id }}</button></td>
+                    <td><button type="button" name="ver" (click)="abrirModal(cliente)" class="btn btn-primary btn-sm">{{cliente.id }}</button></td>
                     <td>{{ cliente.nombre }}</td>
                     <td>{{ cliente.documento }}</td>
                     <td>{{ cliente.email }}</td>

@@ -1,10 +1,10 @@
-import { Departamento } from './clientes/departamento';
-import { Clima } from './clientes/clima';
+import { Departamento } from './departamento';
+import { Clima } from './clima';
 
 export class Ciudad {
-    id!: number;
-    ciudad!: string;
-    id_departamento!: Departamento;
-    altitud!: string;
-    id_clima!: Clima;
+    id: number;
+    ciudad: string;
+    id_departamento: Departamento;
+    altitud: string;
+    id_clima: Clima;
 }
