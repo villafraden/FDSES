@@ -31,6 +31,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
+// Import routing module
+//import { AppRoutingModule } from './app.routing';
+
+
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
@@ -70,7 +82,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     AngularEmojisModule,
     NgxPaginationModule
   ],

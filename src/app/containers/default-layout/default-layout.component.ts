@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+/*import {Component} from '@angular/core';
 import { navItems } from '../../_nav';
 
 @Component({
@@ -12,4 +12,4 @@ export class DefaultLayoutComponent {
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   };
-}
+}*/
