@@ -18,7 +18,7 @@ export class ClientesComponent implements OnInit {
   public page: number;
   clienteSeleccionado: Cliente;
 
-  constructor(private clienteService: ClienteService, 
+  constructor(private clienteService: ClienteService,
     private activatedRoute: ActivatedRoute,
     public authService: AuthService,
     public modalService: ModalService) { }
@@ -33,7 +33,7 @@ export class ClientesComponent implements OnInit {
             })
           })
         ).subscribe(clientes => this.clientes = clientes);
-      
+
 
     this.modalService.notificarUpload.subscribe(cliente => {
       this.clientes = this.clientes.map(clienteOriginal => {

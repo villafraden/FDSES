@@ -1,6 +1,6 @@
 export class Proveedor {
 
-    id!: number;
+    id: number;
     documento: string;
     nombre: string;
     telefono: string;

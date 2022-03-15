@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Cliente } from './cliente';
+import { Cliente } from '../views/clientes/cliente';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import { Ciudad } from '../../ciudad';
-import { TipoDocumento } from '../../tipo_documento';
+import { Ciudad } from '../ciudad';
+import { TipoDocumento } from '../tipo_documento';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class clienteService {
 
   private urlEndPoint: string = 'http://localhost:8080/api/clientes';
 
@@ -24,29 +24,24 @@ export class ClienteService {
     return this.http.get<Ciudad[]>(this.urlEndPoint + '/ciudades');
   }
 
-  getClientes(): Observable<Cliente[]> {
-    return this.http.get(this.urlEndPoint).pipe(
-      tap(response => {
-        let clientes = response  as Cliente[];
-        console.log('ClienteService: tap 1');
-         clientes.forEach(cliente =>{
-          console.log(cliente.nombre);
-          });
-        }),
-      map(response => {
-        let clientes = response  as Cliente[];
-          return clientes.map(cliente => {
-            cliente.nombre = cliente.nombre.toUpperCase();
-            return cliente;
-      });
-    }),
+  getClientes(page: number): Observable<any> {
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+      tap((response: any) => {
+       console.log('ClienteService: tap 1');
+        (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+      }),
+      map((response: any) => {
+        (response.content as Cliente[]).map(cliente => {
+          cliente.nombre = cliente.nombre.toUpperCase();
+          return cliente;
+        });
+        return response;
+      }),
       tap(response => {
         console.log('ClienteService: tap 2');
-        response.forEach(cliente => {
-          console.log(cliente.nombre);
-        });
-    })
-  );
+        (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+      })
+    );
   }
 
   create(cliente: Cliente): Observable<Cliente> {
