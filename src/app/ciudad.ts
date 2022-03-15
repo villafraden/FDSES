@@ -6,5 +6,5 @@ export class Ciudad {
     nombre!: string;
     id_departamento!: Departamento;
     altitud!: string;
-    id_clima!: Clima;
+    clima!: Clima;
 }

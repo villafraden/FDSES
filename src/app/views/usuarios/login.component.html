@@ -16,14 +16,14 @@
                       ></span>
                     </div>
                     <input
-                    [(ngModel)]="usuario.username"
-                    type="text"
-                    class="form-control"
-                    name="username"
-                    id="username"
-                    placeholder="Email"
-                    autofocus
-                    required
+                      [(ngModel)]="usuario.username"
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      id="username"
+                      placeholder="Email"
+                      autofocus
+                      required
                     />
                   </div>
                   <div class="input-group mb-4">
@@ -44,9 +44,12 @@
                   </div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="button" class="btn btn-primary px-4">
-                        Login
-                      </button>
+                      <input
+                        (click)="login()"
+                        type="submit"
+                        class="btn btn-lg btn-primary btn-block"
+                        value="Iniciar Sesion"
+                      />
                     </div>
                     <div class="col-6 text-right">
                       <button type="button" class="btn btn-link px-0">

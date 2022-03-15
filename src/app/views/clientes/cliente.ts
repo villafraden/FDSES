@@ -1,5 +1,6 @@
 import { TipoDocumento } from "../../tipo_documento";
 import { Ciudad } from "../../ciudad";
+import { Clima } from "../../clima";
 
 export class Cliente {
     id!: number;
@@ -14,8 +15,8 @@ export class Cliente {
     email: string;
     fecha_ingreso: string;
     ciudad: Ciudad;
-    //id_tipo_documento: TipoDocumento;
-    tipoDocumento: TipoDocumento;
+    clima: Clima;
+    tipo_documento: TipoDocumento;
     observaciones: string;
 
 }

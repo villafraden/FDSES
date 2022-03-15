@@ -6,6 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Ciudad } from '../../ciudad';
 import { TipoDocumento } from '../../tipo_documento';
+import { Clima } from '../../clima';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,15 @@ export class ClienteService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getTipoDocumento(): Observable<TipoDocumento[]> {
-    return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipo_documento')
+    return this.http.get<TipoDocumento[]>(this.urlEndPoint + '/tipos_documentos')
   }
 
   getCiudades(): Observable<Ciudad[]> {
     return this.http.get<Ciudad[]>(this.urlEndPoint + '/ciudades');
+  }
+
+  getClima(): Observable<Clima[]> {
+    return this.http.get<Clima[]>(this.urlEndPoint + '/climas')
   }
 
   getClientes(): Observable<Cliente[]> {
