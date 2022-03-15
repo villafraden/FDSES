@@ -1,4 +1,4 @@
 export class TipoDocumento {
-    id: number;
-    tipo_documento!: string;
+    id!: number;
+    nombre!: string;
 }

@@ -5,6 +5,11 @@ import { ClienteService } from './cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ciudad } from '../../ciudad';
 import { TipoDocumento } from '../../tipo_documento';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-from',
@@ -17,6 +22,9 @@ export class FromComponent implements OnInit {
   ciudades: Ciudad[];
   tipos_documentos: TipoDocumento[];
   titulo: string = "Crear Cliente";
+
+  //autocompleteControl = new FormControl();
+  //ciudadesFiltrados: Observable<Ciudad[]>;
 
   errores: string[];
 
@@ -35,7 +43,40 @@ export class FromComponent implements OnInit {
     this.clienteService.getCiudades().subscribe(ciudades => this.ciudades = ciudades);
     this.clienteService.getTipoDocumento().subscribe(tipos_documentos => this.tipos_documentos = tipos_documentos);
 
+    /*this.ciudadesFiltrados = this.autocompleteControl.valueChanges.pipe(
+      map(value => typeof value === 'string' ? value : value.nombre),
+      flatMap(value => value ? this._filter(value) : [])
+    );*/
+
   }
+
+  /*private _filter(value: string): Observable<Ciudad[]> {
+    const filterValue = value.toLowerCase();
+
+    return this.clienteService.filtrarCiudades(filterValue);
+  }
+
+  mostrarNombre(ciudad?: Ciudad): string | undefined {
+    return ciudad ? ciudad.ciudad : undefined;
+  }
+
+  seleccionarCiudad(event: MatAutocompleteSelectedEvent): void {
+    let ciudad = event.option.value as Ciudad;
+    console.log(ciudad);
+
+    /*if (this.existeItem(ciudad.id)) {
+      this.incrementaCantidad(ciudad.id)
+    } else {
+      let nuevoItem = new ItemFactura;
+      nuevoItem.producto = ciudad;
+      this.factura.items.push(nuevoItem);
+    }
+
+    this.autocompleteControl.setValue('');
+    event.option.focus();
+    event.option.deselect();
+  }*/
+
 
   create(): void {
     console.log(this.cliente);

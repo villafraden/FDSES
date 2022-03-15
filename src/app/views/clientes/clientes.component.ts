@@ -7,6 +7,7 @@ import swal from 'sweetalert2';
 import { ModalService } from './detalle/modal.service';
 import { AuthService } from '../usuarios/auth.service';
 
+
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html'
@@ -14,32 +15,25 @@ import { AuthService } from '../usuarios/auth.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
-  paginador: any;
+  public page: number;
+  clienteSeleccionado: Cliente;
+
   constructor(private clienteService: ClienteService,
     private activatedRoute: ActivatedRoute,
     public authService: AuthService,
     public modalService: ModalService) { }
 
   ngOnInit(): void {
-
-    this.activatedRoute.paramMap.subscribe(params => {
-      let page: number = +params.get('page');
-
-      if (!page) {
-        page = 0;
-      }
-
-      this.clienteService.getClientes(page)
+    this.clienteService.getClientes()
         .pipe(
-          tap(response => {
+          tap(clientes => {
             console.log('ClientesComponent: tap 3');
-            (response.content as Cliente[]).forEach(cliente => console.log(cliente.nombre));
+            clientes.forEach(cliente => {
+              console.log(cliente.nombre);
+            })
           })
-        ).subscribe(response => {
-          this.clientes = response.content as Cliente[];
-          this.paginador = response;
-        });
-    });
+        ).subscribe(clientes => this.clientes = clientes);
+
 
     this.modalService.notificarUpload.subscribe(cliente => {
       this.clientes = this.clientes.map(clienteOriginal => {
