@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+//import { HeaderComponent } from './header/header.component';
+//import { FooterComponent } from './footer/footer.component';
 import { ClientesComponent } from './views/clientes/clientes.component';
 import { FromComponent } from './views/clientes/form.component';
 import { ClienteService } from './views/clientes/cliente.service';
@@ -31,6 +31,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
+// Import routing module
+import { AppRoutingModule } from './app.routing';
+
+
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
@@ -47,8 +59,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+    //HeaderComponent,
+    //FooterComponent,
     ClientesComponent,
     ProveedoresComponent,
     FromComponent,
