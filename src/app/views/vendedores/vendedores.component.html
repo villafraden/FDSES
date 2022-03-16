@@ -1,7 +1,10 @@
-<detalle-vendedor *ngIf="vendedorSeleccionado" [Vendedor] ="vendedorSeleccionado"></detalle-vendedor>
+<detalle-vendedor
+  *ngIf="vendedorSeleccionado"
+  [vendedor]="vendedorSeleccionado"
+></detalle-vendedor>
 <div class="card border-primary my-3" style="max-width: 100rem">
-    <div class="card-body text-primary">
-      <h2 class="card-title " style="text-align:center"  >Listado de Vendedores</h2>
+  <div class="card-body text-primary">
+    <h2 class="card-title " style="text-align:center"  >Listado de Vendedores</h2>
         <div class="my-2 text-left">
             <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/vendedores/formVendedor']">
                 Crear Vendedor
@@ -52,6 +55,5 @@
        previousLabel="Anterior"
        nextLabel="Siguiente"      >
       </pagination-controls>
-
     </div>
 </div>
