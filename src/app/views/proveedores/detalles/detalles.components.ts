@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Proveedor } from '../proveedor';
 import { ProveedorService } from '../proveedor.service';
 import { ActivatedRoute } from '@angular/router';
-import { ModalService } from '../../modal.service';
+import { ModalService } from '../../../modal.service';
 
 @Component({
   selector: 'detalle-proveedor',
-  templateUrl: './detalles.component.html',
-  styleUrls: ['./detalles.component.css']
+  templateUrl: './detalles.components.html',
+  styleUrls: ['./detalles.components.css']
 })
-export class DetallesComponent implements OnInit {
+export class DetallesComponents implements OnInit {
 
   @Input() proveedor: Proveedor;
   titulo: string = "Detalle del Proveedor";

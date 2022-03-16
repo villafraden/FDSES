@@ -18,6 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './views/clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './views/proveedores/proveedores.component';
+import { DetallesComponents } from './views/proveedores/detalles/detalles.components';
+import { FromProveedorComponent } from './views/proveedores/formProveedor.component';
 import { LoginComponent } from './views/usuarios/login.component';
 import { DetallesComponent } from './views/vendedores/detalles/detalles.component';
 import { VendedoresComponent } from './views/vendedores/vendedores.component';
@@ -31,18 +33,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
-import {
-  AppAsideModule,
-  AppBreadcrumbModule,
-  AppHeaderModule,
-  AppFooterModule,
-  AppSidebarModule,
-} from '@coreui/angular';
-
-// Import routing module
-//import { AppRoutingModule } from './app.routing';
-
-
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
@@ -51,6 +41,8 @@ const routes: Routes = [
   { path: 'clientes/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'clientes/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'proveedores', component: ProveedoresComponent },
+  { path: 'proveedores/form', component: FromProveedorComponent },
+  { path: 'proveedores/form/id', component: FromProveedorComponent },
   { path: 'vendedores', component: VendedoresComponent },
   { path: 'login', component: LoginComponent },
   //{ path: 'imagenes', component: LoginComponent }
@@ -69,7 +61,8 @@ const routes: Routes = [
     VendedoresComponent,
     DetallesComponent,
     LoginComponent,
-    //AppHeaderModule,
+    DetallesComponents,
+    FromProveedorComponent
   ],
   imports: [
     BrowserModule,
