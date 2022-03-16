@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from './cliente';
+import { Vendedor } from './vendedor';
 import swal from 'sweetalert2';
-import { ClienteService } from './cliente.service';
+import { VendedorService } from './vendedor.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ciudad } from '../../ciudad';
 import { TipoDocumento } from '../../tipo_documento';
@@ -12,14 +12,14 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';*/
 
 @Component({
   selector: 'app-from',
-  templateUrl: './form.component.html',
+  templateUrl: './formVendedor.component.html',
 })
-export class FormComponent implements OnInit {
-  public cliente: Cliente = new Cliente();
+export class FormVendedorComponent implements OnInit {
+  public vendedor: Vendedor = new Vendedor();
 
   ciudades: Ciudad[];
   tipos_documentos: TipoDocumento[];
-  titulo: string = 'Crear Cliente';
+  titulo: string = 'Crear Vendedor';
 
   //autocompleteControl = new FormControl();
   //ciudadesFiltrados: Observable<Ciudad[]>;
@@ -27,7 +27,7 @@ export class FormComponent implements OnInit {
   errores: string[];
 
   constructor(
-    private clienteService: ClienteService,
+    private vendedorService: VendedorService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -36,16 +36,16 @@ export class FormComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       let id = +params.get('id');
       if (id) {
-        this.clienteService
-          .getCliente(id)
-          .subscribe((cliente) => (this.cliente = cliente));
+        this.vendedorService
+          .getVendedor(id)
+          .subscribe((vendedor) => (this.vendedor = vendedor));
       }
     });
 
-    this.clienteService
+    this.vendedorService
       .getCiudades()
       .subscribe((ciudades) => (this.ciudades = ciudades));
-    this.clienteService
+    this.vendedorService
       .getTipoDocumento()
       .subscribe(
         (tipos_documentos) => (this.tipos_documentos = tipos_documentos)
@@ -85,13 +85,13 @@ export class FormComponent implements OnInit {
   }*/
 
   create(): void {
-    console.log(this.cliente);
-    this.clienteService.create(this.cliente).subscribe(
-      (cliente) => {
-        this.router.navigate(['/clientes']);
+    console.log(this.vendedor);
+    this.vendedorService.create(this.vendedor).subscribe(
+      (vendedor) => {
+        this.router.navigate(['/vendedores']);
         swal.fire(
-          'Nuevo cliente',
-          `El cliente ${cliente.nombre} ha sido creado con éxito`,
+          'Nuevo vendedor',
+          `El vendedor ${vendedor.nombre} ha sido creado con éxito`,
           'success'
         );
       },
@@ -104,14 +104,14 @@ export class FormComponent implements OnInit {
   }
 
   update(): void {
-    console.log(this.cliente);
+    console.log(this.vendedor);
     //this.cliente.facturas = null;
-    this.clienteService.update(this.cliente).subscribe(
+    this.vendedorService.update(this.vendedor).subscribe(
       (json) => {
-        this.router.navigate(['/clientes']);
+        this.router.navigate(['/vendedores']);
         swal.fire(
-          'Cliente Actualizado',
-          `${json.mensaje}: ${json.cliente.nombre}`,
+          'Vendedor Actualizado',
+          `${json.mensaje}: ${json.vendedor.nombre}`,
           'success'
         );
       },

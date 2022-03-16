@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientesComponent } from './views/clientes/clientes.component';
-import { FromComponent } from './views/clientes/form.component';
+import { FormComponent } from './views/clientes/form.component';
 import { ClienteService } from './views/clientes/cliente.service';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,9 +18,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './views/clientes/detalle/detalle.component';
 import { ProveedoresComponent } from './views/proveedores/proveedores.component';
+import { DetallesComponents } from './views/proveedores/detalles/detalles.components';
+import { FormProveedorComponent } from './views/proveedores/formProveedor.component';
 import { LoginComponent } from './views/usuarios/login.component';
-import { DetallesComponent } from './views/vendedores/detalles/detalles.component';
 import { VendedoresComponent } from './views/vendedores/vendedores.component';
+import { DetallesComponent } from './views/vendedores/detalles/detalles.component';
+import { FormVendedorComponent } from './views/vendedores/formVendedor.component';
 import { AuthGuard } from './views/usuarios/guards/auth.guard';
 import { RoleGuard } from './views/usuarios/guards/role.guard';
 import { TokenInterceptor } from './views/usuarios/interceptors/token.interceptor';
@@ -30,32 +33,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
-import { FromProveedorComponent } from './views/proveedores/formProveedor.component';
-import { DetallesComponents } from './views/proveedores/detalles/detalles.components';
-
-import {
-  AppAsideModule,
-  AppBreadcrumbModule,
-  AppHeaderModule,
-  AppFooterModule,
-  AppSidebarModule,
-} from '@coreui/angular';
-
-// Import routing module
-//import { AppRoutingModule } from './app.routing';
-
 
 registerLocaleData(localeES, 'es');
 
 const routes: Routes = [
   //{path: '', redirectTo: '/clientes', pathMatch: 'full'},
   { path: 'clientes', component: ClientesComponent },
-  { path: 'clientes/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
-  { path: 'clientes/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
+  { path: 'clientes/form', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+  { path: 'clientes/form/:id', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'proveedores', component: ProveedoresComponent },
-  { path: 'proveedores/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
-  { path: 'proveedores/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
+  { path: 'proveedores/formProveedor', component: FormProveedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+  { path: 'proveedores/formProveedor/:id', component: FormProveedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'vendedores', component: VendedoresComponent },
+  { path: 'vendedores/formVendedor', component: FormVendedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+  { path: 'vendedores/formVendedor/:id', component: FormVendedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'login', component: LoginComponent },
   //{ path: 'imagenes', component: LoginComponent }
 ]
@@ -67,15 +58,15 @@ const routes: Routes = [
     FooterComponent,
     ClientesComponent,
     ProveedoresComponent,
-    FromComponent,
+    FormComponent,
     DetalleComponent,
     LoginComponent,
     VendedoresComponent,
     DetallesComponent,
     LoginComponent,
-    FromProveedorComponent,
-    DetallesComponents
-
+    FormProveedorComponent,
+    DetallesComponents,
+    FormVendedorComponent
     //AppHeaderModule,
   ],
   imports: [

@@ -4,17 +4,18 @@
   </li>
 </ul>
 
+
 <div class="card bg-dark text-white my-2">
   <div class="card-header">{{ titulo }}</div>
   <div class="card-body">
-    <form #clienteForm="ngForm">
+    <form #vendedorForm="ngForm">
       <div class="form-group row">
         <label for="nombre" class="col-form-label col-sm-2 mb-3">Nombre</label>
         <div class="col-sm-9">
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.nombre"
+            [(ngModel)]="vendedor.nombre"
             name="nombre"
             #nombre="ngModel"
           />
@@ -41,7 +42,7 @@
           <select
             [compareWith]="compararTipoDocumento"
             class="form-control"
-            [(ngModel)]="cliente.tipo_documento"
+            [(ngModel)]="vendedor.tipo_documento"
             name="tipo_documento"
           >
             <option [ngValue]="undefined">Seleccione un Tipo Documento</option>
@@ -58,7 +59,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.documento"
+            [(ngModel)]="vendedor.documento"
             name="documento"
             #documento="ngModel"
           />
@@ -77,60 +78,13 @@
         </div>
       </div>
 
-      <div class="form-group row">
-        <label for="contacto" class="col-form-label col-sm-2 mb-3"
-          >Contacto</label
-        >
-        <div class="col-sm-9">
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="cliente.contacto"
-            name="contacto"
-            #contacto="ngModel"
-          />
-          <!--required minlength="4"-->
-          <div
-            class="alert alert-danger"
-            *ngIf="contacto.invalid && (contacto.dirty || contacto.touched)"
-          >
-            <div *ngIf="contacto.errors?.['required']">
-              El contacto es requerido
-            </div>
-            <div *ngIf="contacto.errors?.['minlength']">
-              El contacto debe tener al menos 4 caracteres
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="form-group row">
-        <label for="cargo" class="col-form-label col-sm-2 mb-3">Cargo</label>
-        <div class="col-sm-4">
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="cliente.cargo"
-            name="cargo"
-            #cargo="ngModel"
-          />
-          <!--required minlength="4"-->
-          <div
-            class="alert alert-danger"
-            *ngIf="cargo.invalid && (cargo.dirty || cargo.touched)"
-          >
-            <div *ngIf="cargo.errors?.['required']">El cargo es requerido</div>
-            <div *ngIf="cargo.errors?.['minlength']">
-              El cargo debe tener al menos 4 caracteres
-            </div>
-          </div>
-        </div>
         <label for="ciudad" class="col-form-label col-sm-2 mb-3">Ciudad</label>
         <div class="col-sm-3">
           <select
             [compareWith]="compararCiudad"
             class="form-control"
-            [(ngModel)]="cliente.ciudad"
+            [(ngModel)]="vendedor.ciudad"
             name="ciudad"
           >
             <option [ngValue]="undefined">Selecione una Ciudad</option>
@@ -139,29 +93,7 @@
             </option>
           </select>
         </div>
-        <!--<div class="col-sm-3">
-          <mat-form-field>
-            <input
-            type="text"
-            matInput
-            [formControl]="autocompleteControl"
-            [matAutocomplete]="auto"
-          />
-            <mat-autocomplete
-              #auto="matAutocomplete"
-              [displayWith]="mostrarNombre"
-              (optionSelected)="seleccionarCiudad($event)"
-            >
-              <mat-option
-                *ngFor="let ciudad of ciudadesFiltrados | async"
-                [value]="ciudad"
-              >
-                {{ ciudad.ciudad }}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        </div>-->
-      </div>
+
 
       <div class="form-group row">
         <label for="direccion" class="col-form-label col-sm-2 mb-3"
@@ -171,7 +103,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.direccion"
+            [(ngModel)]="vendedor.direccion"
             name="direccion"
             #direccion="ngModel"
           />
@@ -198,7 +130,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.telefono"
+            [(ngModel)]="vendedor.telefono"
             name="telefono"
             #telefono="ngModel"
           />
@@ -218,16 +150,7 @@
         <label for="telefono1" class="col-form-label col-sm-2 mb-3"
           >Telefono 2</label
         >
-        <div class="col-sm-3">
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="cliente.telefono1"
-            name="telefono1"
-            #telefono1="ngModel"
-          />
-          <!--required minlength="4"-->
-        </div>
+
       </div>
 
       <div class="form-group row">
@@ -238,7 +161,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.celular"
+            [(ngModel)]="vendedor.celular"
             name="celular"
             #celular="ngModel"
           />
@@ -263,7 +186,7 @@
             matInput
             [matDatepicker]="miDatepicker"
             class="form-control"
-            [(ngModel)]="cliente.fecha_ingreso"
+            [(ngModel)]="vendedor.fecha_ingreso"
             name="fecha_ingreso"
             style="display: inline; width: 210px"
           />
@@ -281,7 +204,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.email"
+            [(ngModel)]="vendedor.email"
             name="email"
             #email="ngModel"
           />
@@ -306,7 +229,7 @@
           <input
             type="text"
             class="form-control"
-            [(ngModel)]="cliente.observaciones"
+            [(ngModel)]="vendedor.observaciones"
             name="observaciones"
             #observaciones="ngModel"
           />
@@ -321,8 +244,8 @@
             class="btn btn-success"
             role="button"
             (click)="create()"
-            *ngIf="!cliente.id; else elseBlock"
-            [disabled]="!clienteForm.form.valid"
+            *ngIf="!vendedor.id; else elseBlock"
+            [disabled]="!vendedorForm.form.valid"
           >
             Crear
           </button>
@@ -331,7 +254,7 @@
               class="btn btn-success"
               role="button"
               (click)="update()"
-              [disabled]="!clienteForm.form.valid"
+              [disabled]="!vendedorForm.form.valid"
             >
               Editar
             </button>

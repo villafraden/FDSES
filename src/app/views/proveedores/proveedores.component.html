@@ -4,9 +4,9 @@
     <div class="card-body text-primary">
       <h2 class="card-title" style="text-align:center">Listado de Proveedores</h2>
         <div class="my-2 text-left">
-            <!--<button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/proveedores/formProveedor']">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/proveedores/formProveedor']">
                 Crear Proveedor
-            </button>-->
+            </button>
         </div>
         <div *ngIf="proveedores?.length == 0" class="alert alert-info">
             No hay registros en la base de datos!
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let proveedor of proveedores | paginate: { itemsPerPage: 8, currentPage: page }">
-                    <td><button type="button" name="ver_proveedor" (click)="abrirModal(proveedor)"
+                    <td><button type="button" name="ver" (click)="abrirModal(proveedor)"
                         class="btn btn-primary btn-sm">{{ proveedor.id }}</button></td>
                     <td>{{ proveedor.nombre }}</td>
                     <td>{{ proveedor.documento }}</td>

@@ -1,6 +1,5 @@
 import { TipoDocumento } from "../../tipo_documento";
 import { Ciudad } from "../../ciudad";
-
 export class Proveedor {
 
     id: number;

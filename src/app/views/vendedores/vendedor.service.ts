@@ -62,6 +62,22 @@ export class VendedorService {
     );
   }
 
+  create(vendedor: Vendedor): Observable<Vendedor> {
+    return this.http.post(this.urlEndPoint, vendedor).pipe(
+      map((response: any) => response.cliente as Vendedor),
+      catchError(e => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      }
+      )
+    );
+  }
+
   update(vendedor: Vendedor): Observable<any> {
     return this.http.put<any>(`${this.urlEndPoint}/${vendedor.id}`, vendedor).pipe(
       catchError(e => {
