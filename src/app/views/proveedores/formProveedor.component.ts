@@ -1,10 +1,14 @@
-import swal from 'sweetalert2';
-import { Ciudad } from '../ciudad';
-import { TipoDocumento } from '../tipo_documento';
-import { Proveedor } from './proveedor';
-import { ProveedorService } from './proveedor.service';
 import { Component, OnInit } from '@angular/core';
+import { Proveedor } from './proveedor';
+import swal from 'sweetalert2';
+import { ProveedorService } from './proveedor.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Ciudad } from '../../ciudad';
+import { TipoDocumento } from '../../tipo_documento';
+
+
+
+
 
 
 
@@ -12,7 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'app-from',
   templateUrl: './formProveedor.component.html'
 })
-export class FromComponent implements OnInit {
+export class FromProveedorComponent implements OnInit {
 
   public proveedor: Proveedor = new Proveedor();
 
@@ -59,7 +63,7 @@ export class FromComponent implements OnInit {
     //this.cliente.facturas = null;
     this.proveedorService.update(this.proveedor).subscribe(
       json => {
-        this.router.navigate(['/proveedor']);
+        this.router.navigate(['/proveedores']);
         swal.fire('Proveedor Actualizado', `${json.mensaje}: ${json.proveedor.nombre}`, 'success');
       },
       err => {

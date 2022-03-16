@@ -7,6 +7,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { Ciudad } from '../../ciudad';
 import { TipoDocumento } from '../../tipo_documento';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,8 @@ export class ProveedorService {
   getCiudades(): Observable<Ciudad[]> {
     return this.http.get<Ciudad[]>(this.urlEndPoint + '/proveedores');
   }
+
+
 
   getProveedores(): Observable<Proveedor[]> {
     return this.http.get(this.urlEndPoint).pipe(

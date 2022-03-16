@@ -33,7 +33,7 @@
                     {{ cliente.fecha_ingreso | date: "fullDate" }}
                   </li>
                   <li class="list-group-item">
-                    Ciudad: {{ cliente.ciudad.nombre }}, 
+                    Ciudad: {{ cliente.ciudad.nombre }},
                     Departamento: {{ cliente.ciudad.departamento.departamento }},
                     Clima: {{ cliente.ciudad.clima.nombre }},
                     Altitud: {{cliente.ciudad.altitud}}
@@ -107,10 +107,7 @@
               (click)="cerrarModal()"
               type="button"
               class="btn btn-danger"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
-            </button>
+              data-bs-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>

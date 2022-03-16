@@ -30,6 +30,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { FromProveedorComponent } from './views/proveedores/formProveedor.component';
+import { DetallesComponents } from './views/proveedores/detalles/detalles.components';
 
 import {
   AppAsideModule,
@@ -51,6 +53,8 @@ const routes: Routes = [
   { path: 'clientes/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'clientes/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'proveedores', component: ProveedoresComponent },
+  { path: 'proveedores/form', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+  { path: 'proveedores/form/:id', component: FromComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'vendedores', component: VendedoresComponent },
   { path: 'login', component: LoginComponent },
   //{ path: 'imagenes', component: LoginComponent }
@@ -69,6 +73,9 @@ const routes: Routes = [
     VendedoresComponent,
     DetallesComponent,
     LoginComponent,
+    FromProveedorComponent,
+    DetallesComponents
+
     //AppHeaderModule,
   ],
   imports: [
