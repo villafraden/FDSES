@@ -30,6 +30,16 @@ export class ProveedoresComponent implements OnInit {
         } );
       })
       ).subscribe(proveedores => this.proveedores = proveedores);
+
+      this.modalService.notificarUpload.subscribe(proveedor => {
+        this.proveedores = this.proveedores.map(proveedorOriginal => {
+          if (proveedor.id == proveedorOriginal.id) {
+            proveedorOriginal.id = proveedor.id;
+          }
+          return proveedorOriginal;
+        })
+      })
+
   }
 
 

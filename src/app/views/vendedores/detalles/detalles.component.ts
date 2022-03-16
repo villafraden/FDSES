@@ -12,7 +12,7 @@ import { ModalService } from '../../../modal.service';
 export class DetallesComponent implements OnInit {
 
   @Input() vendedores: Vendedor;
-  titulo: string = "Detalle del Proveedor";
+  titulo: string = "Detalle del Vendedor";
 
   constructor(private vendedorService: VendedorService,
     private activatedRoute: ActivatedRoute,
