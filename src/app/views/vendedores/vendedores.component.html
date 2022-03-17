@@ -27,9 +27,9 @@
           <th>Telefono 1</th>
           <th>Celular</th>
           <th>Direccion</th>
-          <th>Crear Factura</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
+          <th *ngIf="authService.hasRole('ROLE_ADMIN')">Crear Factura</th>
+          <th *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</th>
+          <th *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -55,25 +55,39 @@
           <td>{{ vendedor.telefono }}</td>
           <td>{{ vendedor.celular }}</td>
           <td>{{ vendedor.direccion }}</td>
-          <td></td>
           <td>
             <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
               type="button"
-              name="editar"
-              [routerLink]="['/vendedores/formVendedor', vendedor.id]"
-              class="btn btn-success btn-sm"
+              name="crear Factura"
+              class="btn btn-sm"
             >
-              Editar
+              <angular-emojis
+                [name]="'page_facing_up'"
+                size="20"
+              ></angular-emojis>
             </button>
           </td>
           <td>
             <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
+              type="button"
+              name="editar"
+              [routerLink]="['/vendedores/formVendedor', vendedor.id]"
+              class="btn btn-sm"
+            >
+              <angular-emojis [name]="'pencil2'" size="20"></angular-emojis>
+            </button>
+          </td>
+          <td>
+            <button
+              *ngIf="authService.hasRole('ROLE_ADMIN')"
               type="button"
               name="eliminar"
               (click)="delete(vendedor)"
-              class="btn btn-danger btn-sm"
+              class="btn btn-sm"
             >
-              Eliminar
+              <angular-emojis [name]="'wastebasket'" size="20"></angular-emojis>
             </button>
           </td>
         </tr>
