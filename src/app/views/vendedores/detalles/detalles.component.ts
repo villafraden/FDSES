@@ -3,19 +3,21 @@ import { Vendedor } from '../vendedor';
 import { VendedorService } from '../vendedor.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../../../modal.service';
+import { AuthService } from '../../usuarios/auth.service';
 
 @Component({
-  selector: 'detalle-vendedor',
+  selector: 'detalles-vendedor',
   templateUrl: './detalles.component.html',
   styleUrls: ['./detalles.component.css']
 })
 export class DetallesComponent implements OnInit {
 
-  @Input() vendedores: Vendedor;
+  @Input() vendedor: Vendedor;
   titulo: string = "Detalle del Vendedor";
 
-  constructor(private vendedorService: VendedorService,
+  constructor(private vendedorService: VendedorService, 
     private activatedRoute: ActivatedRoute,
+    private authService:AuthService,
     public modalService: ModalService) { }
 
   ngOnInit(): void { }

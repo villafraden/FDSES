@@ -20,19 +20,14 @@
               <div class="col-sm">
                 <ul *ngIf="vendedor" class="list-group text-dark mb-3">
                   <li class="list-group-item active">{{ vendedor.nombre }}</li>
-                  <li class="list-group-item">
-                    {{ vendedor.telefono }}
-                  </li>
-                  <li class="list-group-item">{{ vendedor.documento }}</li>
-                  <li class="list-group-item">{{ vendedor.direccion }}</li>
-                  <li class="list-group-item">{{ vendedor.contacto }}</li>
-                  <li class="list-group-item">{{ vendedor.email }}</li>
-                  <li class="list-group-item">{{ vendedor.celular}}</li>
-                  <li class="list-group-item">{{ vendedor.telefono }}</li>
-                  <li class="list-group-item">
-                    {{ vendedor.fecha_ingreso | date: "fullDate" }}
-                  </li>
-                  <li class="list-group-item">{{ vendedor.ciudad.nombre }}</li>
+                  <li class="list-group-item">{{vendedor.tipo_documento.nombre}}</li>
+                  <li class="list-group-item">{{vendedor.documento}}</li>
+                  <li class="list-group-item">{{vendedor.direccion}}</li>
+                  <li class="list-group-item">{{vendedor.telefono}}</li>
+                  <li class="list-group-item">{{vendedor.celular}}</li>
+                  <li class="list-group-item">{{vendedor.email}}</li>
+                  <li class="list-group-item">{{vendedor.fecha_ingreso | date: "fullDate"}}</li>
+                  <li class="list-group-item">{{vendedor.ciudad.nombre}}</li>
                 </ul>
               </div>
             </div>
@@ -42,10 +37,7 @@
               (click)="cerrarModal()"
               type="button"
               class="btn btn-danger"
-              data-bs-dismiss="modal"
-            >
-              Cancelar
-            </button>
+              data-bs-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
