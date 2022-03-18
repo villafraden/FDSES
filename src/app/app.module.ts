@@ -33,6 +33,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularEmojisModule } from 'angular-emojis';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { FacturasComponent } from './views/facturas/facturas.component';
+import { DetalleFacturaComponent } from './views/facturas/detalle-factura.component';
 
 registerLocaleData(localeES, 'es');
 
@@ -48,7 +50,8 @@ const routes: Routes = [
   { path: 'vendedores/formVendedor', component: FormVendedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'vendedores/formVendedor/:id', component: FormVendedorComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'login', component: LoginComponent },
-  //{ path: 'imagenes', component: LoginComponent }
+  { path: 'facturas/:id', component: DetalleFacturaComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
+  { path: 'facturas/form/:clienteId', component: FacturasComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } }
 ]
 
 @NgModule({
@@ -66,7 +69,8 @@ const routes: Routes = [
     LoginComponent,
     FormProveedorComponent,
     DetallesComponents,
-    FormVendedorComponent
+    FormVendedorComponent,
+    FacturasComponent
     //AppHeaderModule,
   ],
   imports: [

@@ -1,5 +1,6 @@
 import { TipoDocumento } from "../../tipo_documento";
 import { Ciudad } from "../../ciudad";
+import { Factura } from '../facturas/models/factura';
 
 export class Cliente {
     id!: number;
@@ -16,5 +17,5 @@ export class Cliente {
     ciudad!: Ciudad;
     tipo_documento!: TipoDocumento;
     observaciones!: string;
-
+    facturas: Array<Factura> = [];
 }
