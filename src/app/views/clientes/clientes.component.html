@@ -66,6 +66,7 @@
               *ngIf="authService.hasRole('ROLE_ADMIN')"
               type="button"
               name=""
+              [routerLink]="['/facturas/form', cliente.id]"
               class="btn btn-sm"
             >
               <angular-emojis

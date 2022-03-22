@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { ModalService } from '../../modal.service';
+import { AuthService } from '../usuarios/auth.service';
 
 @Component({
   selector: 'app-vendedores',
@@ -12,41 +13,38 @@ import { ModalService } from '../../modal.service';
   styleUrls: ['./vendedores.component.css'],
 })
 export class VendedoresComponent implements OnInit {
-
+  
   vendedores: Vendedor[];
   public page: number;
 
-  paginador: any;
   vendedorSeleccionado: Vendedor;
 
   constructor(
     private vendedorService: VendedorService,
     private activatedRoute: ActivatedRoute,
+    public authService: AuthService,
     public modalService: ModalService
   ) {}
 
-  ngOnInit() {
-    this.vendedorService
-      .getVendedores()
+  ngOnInit(): void {
+    this.vendedorService.getVendedores()
       .pipe(
-        tap((vendedores) => {
+        tap(vendedores => {
           console.log('VendedoresComponent: tap 3');
-          vendedores.forEach((vendedor) => {
+          vendedores.forEach(vendedor => {
             console.log(vendedor.nombre);
-          });
+          })
         })
-      )
-      .subscribe((vendedores) => (this.vendedores = vendedores));
+      ).subscribe(vendedores => this.vendedores = vendedores);
 
-      this.modalService.notificarUpload.subscribe(vendedor => {
-        this.vendedores = this.vendedores.map(vendedorOriginal => {
-          if (vendedor.id == vendedorOriginal.id) {
-            vendedorOriginal.id = vendedor.id;
-          }
-          return vendedorOriginal;
-        })
+    this.modalService.notificarUpload.subscribe(vendedor => {
+      this.vendedores = this.vendedores.map((vendedorOriginal) => {
+        if (vendedor.id == vendedorOriginal.id) {
+          vendedorOriginal.id = vendedor.id;
+        }
+        return vendedorOriginal;
       })
-
+    });
   }
 
   delete(vendedor: Vendedor): void {
@@ -88,4 +86,5 @@ export class VendedoresComponent implements OnInit {
     this.vendedorSeleccionado = vendedor;
     this.modalService.abrirModal();
   }
+
 }

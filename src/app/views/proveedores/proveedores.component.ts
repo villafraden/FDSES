@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
 import { ModalService } from '../../modal.service';
+import { AuthService } from '../usuarios/auth.service';
 
 @Component({
   selector: 'app-proveedores',
@@ -18,7 +19,10 @@ export class ProveedoresComponent implements OnInit {
   paginador: any;
   proveedorSeleccionado: Proveedor;
 
-  constructor(private proveedorService: ProveedorService, private activatedRoute: ActivatedRoute, public modalService: ModalService) { }
+  constructor(private proveedorService: ProveedorService, 
+    private activatedRoute: ActivatedRoute, 
+    public authService:AuthService,
+    public modalService: ModalService) { }
 
   ngOnInit()  {
     this.proveedorService.getProveedores()

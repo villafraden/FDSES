@@ -21,9 +21,9 @@
                     <th>Telefono 1</th>
                     <th>Celular</th>
                     <th>Direccion</th>
-                    <th>Crear Factura</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">Crear Factura</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">Editar</th>
+                    <th *ngIf="authService.hasRole('ROLE_ADMIN')">Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,14 +36,40 @@
                     <td>{{ proveedor.telefono }}</td>
                     <td>{{ proveedor.celular }}</td>
                     <td>{{ proveedor.direccion }}</td>
-                    <td></td>
                     <td>
-                        <button type="button" name="editar" [routerLink]="['/proveedores/formProveedor', proveedor.id]"
-                            class="btn btn-success btn-sm">Editar</button>
-                    </td>
-                    <td>
-                        <button type="button" name="eliminar" (click)='delete(proveedor)'
-                            class="btn btn-danger btn-sm">Eliminar</button>
+                        <button
+                          *ngIf="authService.hasRole('ROLE_ADMIN')"
+                          type="button"
+                          name=""
+                          class="btn btn-sm"
+                        >
+                          <angular-emojis
+                            [name]="'page_facing_up'"
+                            size="20"
+                          ></angular-emojis>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          *ngIf="authService.hasRole('ROLE_ADMIN')"
+                          type="button"
+                          name="editar"
+                          [routerLink]="['/proveedor/formProveedor', proveedor.id]"
+                          class="btn btn-sm"
+                        >
+                          <angular-emojis [name]="'pencil2'" size="20"></angular-emojis>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          *ngIf="authService.hasRole('ROLE_ADMIN')"
+                          type="button"
+                          name="eliminar"
+                          (click)="delete(proveedor)"
+                          class="btn btn-sm"
+                        >
+                          <angular-emojis [name]="'wastebasket'" size="20"></angular-emojis>
+                        </button>
                     </td>
                 </tr>
             </tbody>
