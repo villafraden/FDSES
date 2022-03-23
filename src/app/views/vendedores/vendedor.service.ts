@@ -23,7 +23,7 @@ export class VendedorService {
   }
 
   getCiudades(): Observable<Ciudad[]> {
-    return this.http.get<Ciudad[]>(this.urlEndPoint + '/vendedores');
+    return this.http.get<Ciudad[]>(this.urlEndPoint + '/ciudades');
   }
 
   getVendedores(): Observable<Vendedor[]> {

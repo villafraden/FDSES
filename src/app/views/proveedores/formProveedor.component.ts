@@ -70,7 +70,7 @@ export class FormProveedorComponent implements OnInit {
     //this.cliente.facturas = null;
     this.proveedorService.update(this.proveedor).subscribe(
       json => {
-        this.router.navigate(['/proveedor']);
+        this.router.navigate(['/proveedores']);
         swal.fire(
           'Proveedor Actualizado',
           `${json.mensaje}: ${json.proveedor.nombre}`,
