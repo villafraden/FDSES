@@ -69,7 +69,7 @@ export class ProveedorService {
     return this.http.get<Proveedor>(`${this.urlEndPoint}/${id}`).pipe(
       catchError((e) => {
         if (e.status != 401 && e.error.mensaje) {
-          this.router.navigate(['/proveedor']);
+          this.router.navigate(['/proveedores']);
           console.error(e.error.mensaje);
         }
 
