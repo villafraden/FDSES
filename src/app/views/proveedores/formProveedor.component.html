@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="form-group row">
         <label for="tipo_documento" class="col-form-label col-sm-2 mb-3"
           >Tipo Documento</label
@@ -47,9 +47,7 @@
             <option [ngValue]="undefined">Seleccione un Tipo Documento</option>
             <option
               *ngFor="let tipo_documento of tipos_documentos"
-              [ngValue]="tipo_documento"
-            >
-              {{ tipo_documento.nombre }}
+              [ngValue]="tipo_documento"> {{ tipo_documento.nombre }}
             </option>
           </select>
         </div>
@@ -212,7 +210,7 @@
           <!--required minlength="4"-->
           <div
             class="alert alert-danger"
-            *ngIf="celular.invalid && proveedor.celular"
+            *ngIf="celular.invalid && (celular.dirty || celular.touched)"
           >
             <div *ngIf="celular.errors?.['required']">
               El celular es requerido
@@ -230,7 +228,7 @@
             matInput
             [matDatepicker]="miDatepicker"
             class="form-control"
-            [(ngModel)]="proveedor"
+            [(ngModel)]="proveedor.fecha_ingreso"
             name="fecha_ingreso"
             style="display: inline; width: 210px"
           />
