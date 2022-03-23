@@ -79,22 +79,6 @@
       </div>
 
 
-        <label for="ciudad" class="col-form-label col-sm-2 mb-3">Ciudad</label>
-        <div class="col-sm-3">
-          <select
-            [compareWith]="compararCiudad"
-            class="form-control"
-            [(ngModel)]="vendedor.ciudad"
-            name="ciudad"
-          >
-            <option [ngValue]="undefined">Selecione una Ciudad</option>
-            <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">
-              {{ ciudad.nombre }}
-            </option>
-          </select>
-        </div>
-
-
       <div class="form-group row">
         <label for="direccion" class="col-form-label col-sm-2 mb-3"
           >Direccion</label
@@ -147,9 +131,21 @@
             </div>
           </div>
         </div>
-        <label for="telefono1" class="col-form-label col-sm-2 mb-3"
-          >Telefono 2</label
-        >
+
+        <label for="ciudad" class="col-form-label col-sm-2 mb-3">Ciudad</label>
+        <div class="col-sm-3">
+          <select
+            [compareWith]="compararCiudad"
+            class="form-control"
+            [(ngModel)]="vendedor.ciudad"
+            name="ciudad"
+          >
+            <option [ngValue]="undefined">Selecione una Ciudad</option>
+            <option *ngFor="let ciudad of ciudades" [ngValue]="ciudad">
+              {{ ciudad.nombre }}
+            </option>
+          </select>
+        </div>
 
       </div>
 
